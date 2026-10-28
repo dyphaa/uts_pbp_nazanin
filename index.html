@@ -4,14 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hayomi &amp; Kenryu's Wedding</title>
-<!-- [DI LUAR CHEATSHEET] Google Fonts: Pinyon Script, Playfair Display, Lora -->
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="terkunci">
 
-<!-- ============ BERANDA DEPAN (AMPLOP) ============ -->
 <div id="sampul">
   <div class="sp-isi">
     <img class="sp-lily muncul masuk d1" src="assets/bunga.jpg" alt="">
@@ -35,9 +33,7 @@
   </div>
 </div>
 
-<!-- MUSIK LATAR: lagu baru diputar saat amplop dibuka (lihat bukaUndangan() di script.js) -->
 <audio id="musik" src="assets/lagu.mp3" loop></audio>
-<!-- ============ HEADER (tetap di atas saat di-scroll) ============ -->
 <header id="atas" class="position-fixed top-0 start-0 w-100 z-3">
   <div class="box">
     <img id="hLogo" src="assets/LOGO monogram.png" alt="HK">
@@ -50,7 +46,6 @@
   </div>
 </header>
 
-<!-- ============ 1. HOME ============ -->
 <section id="home" class="sec s-hero">
   <div class="box">
 
@@ -66,8 +61,6 @@
       AN ANIMATE GATHERING</p>
   </div>
 </section>
-
-<!-- ============ 2. QUOTE ============ -->
 <section class="sec s-quote">
   <div class="box">
     <p class="muncul d1" id="quote">“In a world full of temporary things, walking with you through the quiet noise feels like home.”</p>
@@ -75,7 +68,6 @@
   </div>
 </section>
 
-<!-- ============ 3. GALLERY ============ -->
 <section id="gallery" class="sec s-gallery">
   <div class="box">
     <span class="muncul d1" id="gOur">OUR</span>
@@ -87,7 +79,6 @@
   </div>
 </section>
 
-<!-- ============ 4. MEMORIES ============ -->
 <section class="sec s-memories">
   <div class="box">
     <img class="muncul d1 foto" id="m1" src="assets/g 1 bg 4.jpg" alt="">
@@ -98,17 +89,14 @@
     <p class="muncul d3 mCap" id="c3">And finally, finding a home within each other’s arms—our safest sanctuary in a noisy world.</p>
   </div>
 </section>
-
-<!-- ============ 5. COUNTDOWN ============ -->
 <section class="sec s-count">
-  <!-- video autoplay + loop (muted supaya boleh autoplay) -->
   <video autoplay loop muted src="assets/vid bg5.mp4"></video>
   <div class="box">
     <p class="muncul d1" id="cTgl">SUNDAY, NOVEMBER<br>08, 2026 | VILLA REVERIVE</p>
     <p class="muncul d2" id="cAn">An nimate Gathering</p>
     <p class="muncul d3" id="cJoin">Join us as we celebrate love</p>
     <h2 class="muncul d1" id="cJudul">The Long - Awaited Day</h2>
-    <!-- hitung mundur: tiap angka dan label punya posisi sendiri sesuai desain -->
+
     <b class="dg" id="hari" style="left:727px">17</b><i class="kl" style="left:786px">:</i>
     <b class="dg" id="jam" style="left:812px">00</b><i class="kl" style="left:895px">:</i>
     <b class="dg" id="menit" style="left:922px">00</b><i class="kl" style="left:1030px">:</i>
@@ -118,11 +106,8 @@
   </div>
  
 </section>
-
-<!-- ============ 6. EVENT ============ -->
 <section id="event" class="sec s-event">
   <div class="box">
-    <!-- garis lengkung: gambar transparan (diambil dari desain) -->
     <img class="muncul d2" id="garis" src="assets/garis event.png" alt="">
     <h2 class="muncul d1" id="eJudul">Event</h2>
 
@@ -147,7 +132,6 @@
   </div>
 </section>
 
-<!-- ============ 7. RSVP ============ -->
 <section id="rsvp" class="sec s-rsvp">
   <div class="box">
     <h2 class="muncul d1" id="rJudul">Will You Be Attending</h2>
@@ -173,8 +157,6 @@
     </form>
   </div>
 </section>
-
-<!-- ============ 8. GIFT ============ -->
 <section class="sec s-gift">
   <div class="box">
     <div id="bulatBunga"><img src="assets/bunga.jpg" alt="Lily"></div>
@@ -186,7 +168,6 @@
   </div>
 </section>
 
-<!-- ============ 9. THANK YOU ============ -->
 <section class="sec s-thanks">
   <div class="box">
     <img class="muncul d1 foto" id="tStrip" src="assets/g1 bg9.jpg" alt="">
@@ -198,7 +179,6 @@
 </section>
 <div class="s-footer"></div>
 
-<!-- ============ POP-UP E-TICKET (simulasi) ============ -->
 <div id="popup">
   <div class="tiket">
     <button class="tutup" onclick="tutupPopup()">×</button>
