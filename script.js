@@ -1,9 +1,22 @@
+/* ===== Musik latar =====
+   Isi lagu di index.html pada <audio id="musik" src="...">  */
 var musik = document.getElementById("musik");
 
 function putarMusik() {
-  musik.play(); 
+  musik.play(); // [DI LUAR CHEATSHEET] play()
 }
-var tujuan = new Date(2026, 10, 8, 15); 
+// Lagu TIDAK autoplay: baru diputar saat tombol "Open Invitation" diklik (lihat bukaUndangan)
+
+function toggleMusik() {
+  if (musik.paused) {
+    musik.play();
+  } else {
+    musik.pause();
+  }
+}
+
+/* ===== Countdown menuju 8 November 2026, jam 15.00 ===== */
+var tujuan = new Date(2026, 10, 8, 15); // tahun, bulan (0-11), tanggal, jam
 
 function tambahNol(angka) {
   if (angka < 10) {
@@ -14,11 +27,11 @@ function tambahNol(angka) {
 
 function hitungMundur() {
   var sekarang = new Date();
-  var selisih = (tujuan - sekarang) / 1000; 
+  var selisih = (tujuan - sekarang) / 1000; // detik
   if (selisih < 0) {
     selisih = 0;
   }
-  var hari = Math.floor(selisih / 86400);
+  var hari = Math.floor(selisih / 86400); // [DI LUAR CHEATSHEET] Math.floor
   var jam = Math.floor((selisih % 86400) / 3600);
   var menit = Math.floor((selisih % 3600) / 60);
   var detik = Math.floor(selisih % 60);
@@ -30,18 +43,21 @@ function hitungMundur() {
 hitungMundur();
 setInterval(hitungMundur, 1000);
 
+/* ===== Nomor telepon: hanya angka ===== */
 function bersihkanTelp() {
   var kolom = document.getElementById("telp");
   var asli = kolom.value;
   var bersih = "";
   for (var i = 0; i < asli.length; i++) {
-    var huruf = asli.charAt(i); 
+    var huruf = asli.charAt(i); // [DI LUAR CHEATSHEET] charAt
     if (huruf >= "0" && huruf <= "9") {
       bersih += huruf;
     }
   }
-  kolom.value = bersih; 
+  kolom.value = bersih; // huruf selain angka langsung dibuang
 }
+
+/* ===== Pilihan tunggal (Will You Attend & Number of Guests) ===== */
 var jawabanHadir = "";
 var jawabanTamu = "";
 
@@ -57,12 +73,14 @@ function pilih(idDipilih, daftarId) {
     jawabanTamu = teks;
   }
 }
+
+/* ===== QR tiruan (mockup visual) ===== */
 function buatQR() {
   var hasil = "";
   for (var baris = 0; baris < 21; baris++) {
     for (var kolom = 0; kolom < 21; kolom++) {
       var sudut = (baris < 7 && kolom < 7) || (baris < 7 && kolom > 13) || (baris > 13 && kolom < 7);
-      var hitam = Math.random() > 0.5; 
+      var hitam = Math.random() > 0.5; // [DI LUAR CHEATSHEET] Math.random
       if (sudut) {
         var x = baris % 14;
         var y = kolom % 14;
@@ -75,14 +93,15 @@ function buatQR() {
       }
     }
   }
-  document.getElementById("qr").innerHTML = hasil; 
+  document.getElementById("qr").innerHTML = hasil; // [DI LUAR CHEATSHEET] innerHTML
 }
 
+/* ===== RSVP Now -> pop-up E-Ticket (simulasi) ===== */
 function kirimRSVP() {
   var nama = document.getElementById("nama").value;
   if (jawabanHadir === "" || jawabanTamu === "") {
     document.getElementById("error").textContent = "Please choose your attendance and number of guests.";
-    return false; 
+    return false; // cegah form terkirim
   }
   document.getElementById("error").textContent = "";
   var kode = "HK-2026-" + (Math.floor(Math.random() * 9000) + 1000);
@@ -110,31 +129,35 @@ function simpanTiket() {
   }, 2000);
 }
 
+/* ===== Copy nomor rekening (klik teks "No. rekening") ===== */
 function salin(nomor, idTeks) {
-  navigator.clipboard.writeText(nomor); 
+  navigator.clipboard.writeText(nomor); // [DI LUAR CHEATSHEET] clipboard
   var teks = document.getElementById(idTeks);
   teks.textContent = "Copied!";
   setTimeout(function () {
     teks.textContent = "No. rekening : " + nomor;
   }, 1500);
 }
+
+/* ===== Header: beri latar krem saat halaman di-scroll ===== */
 window.addEventListener("scroll", function () {
   var header = document.getElementById("atas");
-  if (window.scrollY > 40) { 
+  if (window.scrollY > 40) { // [DI LUAR CHEATSHEET] scrollY
     header.classList.add("gulir");
   } else {
     header.classList.remove("gulir");
   }
 });
 
-var daftarMuncul = document.querySelectorAll(".muncul"); 
+/* ===== Animasi masuk: elemen muncul pelan saat terlihat di layar ===== */
+var daftarMuncul = document.querySelectorAll(".muncul"); // [DI LUAR CHEATSHEET] querySelectorAll
 
 function cekMuncul() {
   if (document.body.classList.contains("terkunci")) {
-    return; 
+    return; // masih di beranda depan (amplop), animasi dimulai setelah amplop dibuka
   }
   daftarMuncul.forEach(function (elemen) {
-    var posisi = elemen.getBoundingClientRect().top; 
+    var posisi = elemen.getBoundingClientRect().top; // [DI LUAR CHEATSHEET] getBoundingClientRect
     if (posisi < window.innerHeight - 60) {
       elemen.classList.add("masuk");
     }
@@ -144,14 +167,15 @@ window.addEventListener("scroll", cekMuncul);
 window.addEventListener("load", cekMuncul);
 cekMuncul();
 
+/* ===== Beranda depan: buka amplop -> lagu mulai -> halaman utama tampil ===== */
 function bukaUndangan() {
-  document.getElementById("sampul").classList.add("buka"); 
+  document.getElementById("sampul").classList.add("buka"); // judul memudar
   document.getElementById("amplop").classList.add("buka");
   document.getElementById("btnBuka").disabled = true;
-  putarMusik(); 
+  putarMusik(); // lagu mulai saat amplop dibuka
 
   setTimeout(function () {
-    document.getElementById("sampul").classList.add("geser"); 
+    document.getElementById("sampul").classList.add("geser"); // sampul naik dan memudar
     document.body.classList.remove("terkunci");
     window.scrollTo(0, 0);
     cekMuncul();
